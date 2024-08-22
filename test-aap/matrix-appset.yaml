@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   syncPolicy:
-    preserveResourcesOnDeletion: true
+    preserveResourcesOnDeletion: true                   #applicationset delete then applicaton resourec not deleted.
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
