@@ -1,5 +1,5 @@
 {
-  "repoURL": "https://github.com/gopaljayanthi/forjpmc.git",
+  "repoURL": "https://github.com/bitthalpatidar/forjpmc.git",
   "targetRevision": "master",
   "chart": "",
   "valuesPath": "addons/ecrapp/values.yaml",
