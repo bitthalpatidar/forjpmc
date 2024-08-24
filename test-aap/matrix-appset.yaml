@@ -5,8 +5,8 @@ metadata:
   namespace: argocd
 spec:
   syncPolicy:
-    #preserveResourcesOnDeletion: true                   #applicationset delete then applicaton resourec not deleted.
-    applicationsSync: create-only
+    preserveResourcesOnDeletion: true                   #applicationset delete then applicaton resourec not deleted.
+    #applicationsSync: create-only
     # applicationsSync: create-update
     # applicationsSync: create-delete
   goTemplate: true
