@@ -4,7 +4,7 @@ metadata:
   name: matrix-example
   namespace: argocd
 spec:
-  # syncPolicy:
+  syncPolicy:
     #preserveResourcesOnDeletion: true                   #applicationset delete then applicaton resourec not deleted.
     applicationsSync: create-only
     #applicationsSync: create-update
