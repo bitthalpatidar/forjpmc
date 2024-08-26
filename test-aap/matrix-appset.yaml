@@ -6,9 +6,9 @@ metadata:
 spec:
   syncPolicy:
     #preserveResourcesOnDeletion: true                   #applicationset delete then applicaton resourec not deleted.
-    #applicationsSync: create-only
+    applicationsSync: create-only
     #applicationsSync: create-update
-    applicationsSync: create-delete
+    #applicationsSync: create-delete
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
