@@ -6,8 +6,8 @@ metadata:
 spec:
   syncPolicy:
     #preserveResourcesOnDeletion: true                 
-    #applicationsSync: create-only
-    applicationsSync: create-update
+    applicationsSync: create-only
+    #applicationsSync: create-update
     #applicationsSync: create-delete
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
