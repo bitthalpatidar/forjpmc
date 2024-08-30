@@ -13,7 +13,7 @@ spec:
   strategy:
     type: AllAtOnce
   syncPolicy:
-    preserveResourcesOnDeletion: true
+    preserveResourcesOnDeletion: false
   template:
     metadata:
       name: in-cluster-{{name}}
