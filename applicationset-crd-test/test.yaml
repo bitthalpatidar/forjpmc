@@ -28,16 +28,16 @@ spec:
           releaseName: '{{name}}'
         repoURL: '{{repoURL}}'
         targetRevision: '{{targetRevision}}'
-      syncPolicy:
-        # automated:
-        #   allowEmpty: true
-        #   prune: true
-        # retry:
-        #   backoff:
-        #     duration: 60s
-        #     factor: 2
-        #     maxDuration: 2m
-        #   limit: 10
-        syncOptions:
-        - CreateNamespace=true
-        - ServerSideApply=true
+      # syncPolicy:
+      #   automated:
+      #     allowEmpty: true
+      #     prune: true
+      #   retry:
+      #     backoff:
+      #       duration: 60s
+      #       factor: 2
+      #       maxDuration: 2m
+      #     limit: 10
+      #   syncOptions:
+      #   - CreateNamespace=true
+      #   - ServerSideApply=true
