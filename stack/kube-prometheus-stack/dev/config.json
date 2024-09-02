@@ -3,7 +3,7 @@
   "targetRevision": "54.0.1",
   "chart": "kube-prometheus-stack",
   "namespace": "default",
-  "name": "stack5",
+  "name": "stack",
   "syncwave" : "one",
   "abcd": "",
   "ref": "main"
