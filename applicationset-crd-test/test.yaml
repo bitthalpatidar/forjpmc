@@ -15,8 +15,8 @@ spec:
     type: AllAtOnce
   syncPolicy:
     #preserveResourcesOnDeletion: false
-    applicationsSync: create-only
-    #applicationsSync: create-update
+    #applicationsSync: create-only
+    applicationsSync: create-update
     #applicationsSync: create-delete
   template:
     metadata:
