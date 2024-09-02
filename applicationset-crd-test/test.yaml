@@ -8,7 +8,7 @@ spec:
   - git:
       files:
       - path: stack/kube-prometheus-stack/dev/config.json
-      #- path: stack/kube-prometheus-stack/dev/config2.json
+      - path: stack/kube-prometheus-stack/dev/config2.json
       repoURL: https://github.com/bitthalpatidar/forjpmc.git
       revision: HEAD
   strategy:
