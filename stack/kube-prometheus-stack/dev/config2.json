@@ -4,7 +4,7 @@
   "chart": "kube-prometheus-stack",
   "namespace": "default",
   "name": "stack",
-  "syncwave" : "one",
+  "syncwave": "one",
   "abcd": "",
   "ref": "main",
   "values": {
@@ -12,17 +12,25 @@
       "args": [
         "--path.rootfs=/host/root",
         "--path.udev.data=/host/root/run/udev/data",
-        "--web.listen-address=[$(HOST_IP)]:9101",
+        "--web.listen-address=[$(HOST_IP)]:9101",  // Updated to 9101
         "--collector.filesystem.mount-points-exclude=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)"
       ],
       "ports": {
-        "http-metrics": 9101
+        "http-metrics": 9101  // Updated to 9101
       },
       "probes": {
         "readinessProbe": {
           "httpGet": {
             "path": "/",
-            "port": 9101,
+            "port": 9101,  // Updated to 9101
+            "scheme": "HTTP"
+          },
+          "periodSeconds": 10
+        },
+        "livenessProbe": {
+          "httpGet": {
+            "path": "/",
+            "port": 9101,  // Updated to 9101
             "scheme": "HTTP"
           },
           "periodSeconds": 10
