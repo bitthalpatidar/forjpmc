@@ -1,47 +1,47 @@
 
 
-# Uncomment the following section if you want to use the commented configuration
+# # Uncomment the following section if you want to use the commented configuration
 
-apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
-metadata:
-  name: stack-addons
-  namespace: argocd
-spec:
-  generators:
-  - git:
-      files:
-      - path: stack/kube-prometheus-stack/dev/config2.json
-      repoURL: https://github.com/bitthalpatidar/forjpmc.git
-      revision: HEAD
-  strategy:
-    type: AllAtOnce
-  syncPolicy:
-    applicationsSync: create-delete
-  template:
-    metadata:
-      name: in-cluster-{{name}}
-    spec:
-      destination:
-        name: in-cluster
-        namespace: '{{namespace}}'
-      project: default
-      sources:
-      - chart: '{{chart}}'
-        helm:
-          releaseName: '{{name}}'
-        repoURL: '{{repoURL}}'
-        targetRevision: '{{targetRevision}}'
-      # syncPolicy:
-      #   automated:
-      #     allowEmpty: true
-      #     prune: true
-      #   retry:
-      #     backoff:
-      #       duration: 60s
-      #       factor: 2
-      #       maxDuration: 2m
-      #     limit: 10
-      #   syncOptions:
-      #   - CreateNamespace=true
-      #   - ServerSideApply=true
+# apiVersion: argoproj.io/v1alpha1
+# kind: ApplicationSet
+# metadata:
+#   name: stack-addons
+#   namespace: argocd
+# spec:
+#   generators:
+#   - git:
+#       files:
+#       - path: stack/kube-prometheus-stack/dev/config2.json
+#       repoURL: https://github.com/bitthalpatidar/forjpmc.git
+#       revision: HEAD
+#   strategy:
+#     type: AllAtOnce
+#   syncPolicy:
+#     applicationsSync: create-delete
+#   template:
+#     metadata:
+#       name: in-cluster-{{name}}
+#     spec:
+#       destination:
+#         name: in-cluster
+#         namespace: '{{namespace}}'
+#       project: default
+#       sources:
+#       - chart: '{{chart}}'
+#         helm:
+#           releaseName: '{{name}}'
+#         repoURL: '{{repoURL}}'
+#         targetRevision: '{{targetRevision}}'
+#       # syncPolicy:
+#       #   automated:
+#       #     allowEmpty: true
+#       #     prune: true
+#       #   retry:
+#       #     backoff:
+#       #       duration: 60s
+#       #       factor: 2
+#       #       maxDuration: 2m
+#       #     limit: 10
+#       #   syncOptions:
+#       #   - CreateNamespace=true
+#       #   - ServerSideApply=true
