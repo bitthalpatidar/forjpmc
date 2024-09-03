@@ -1,8 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: stack-addons
-  namespace: argocd
+  name: stack-addons-new
+  namespace: test
 spec:
   generators:
   - git:
