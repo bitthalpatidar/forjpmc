@@ -36,6 +36,8 @@ spec:
             value: "false"
           - name: "prometheus.enabled"
             value: "false"
+          - name: "alertmanager.enabled"
+            value: "false"
           releaseName: '{{name}}'
         repoURL: '{{repoURL}}'
         targetRevision: '{{targetRevision}}'
