@@ -2,9 +2,32 @@
   "repoURL": "https://prometheus-community.github.io/helm-charts",
   "targetRevision": "54.0.1",
   "chart": "kube-prometheus-stack",
-  "namespace": "jpmc-test",
-  "name": "stack2",
+  "namespace": "default",
+  "name": "stack",
   "syncwave" : "one",
   "abcd": "",
-  "ref": "main"
+  "ref": "main",
+  "values": {
+    "prometheus-node-exporter": {
+      "args": [
+        "--path.rootfs=/host/root",
+        "--path.udev.data=/host/root/run/udev/data",
+        "--web.listen-address=[$(HOST_IP)]:9101",
+        "--collector.filesystem.mount-points-exclude=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)"
+      ],
+      "ports": {
+        "http-metrics": 9101
+      },
+      "probes": {
+        "readinessProbe": {
+          "httpGet": {
+            "path": "/",
+            "port": 9101,
+            "scheme": "HTTP"
+          },
+          "periodSeconds": 10
+        }
+      }
+    }
+  }
 }
