@@ -32,6 +32,8 @@ spec:
           parameters:
           - name: "nodeExporter.enabled"
             value: "false"
+          - name: "prometheusOperator.enabled"
+            value: "false"
           releaseName: '{{name}}'
         repoURL: '{{repoURL}}'
         targetRevision: '{{targetRevision}}'
