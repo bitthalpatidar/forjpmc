@@ -29,6 +29,9 @@ spec:
       sources:
       - chart: '{{chart}}'
         helm:
+          parameters:
+          - name: "nodeExporter.enabled"
+            value: "false"
           releaseName: '{{name}}'
         repoURL: '{{repoURL}}'
         targetRevision: '{{targetRevision}}'
