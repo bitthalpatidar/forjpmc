@@ -27,7 +27,7 @@ spec:
         helm:
           releaseName: '{{name}}'
           values: |
-            stack-prometheus-node-exporter:
+            stack-1-prometheus-node-exporter:
               args:
                 - --path.rootfs=/host/root
                 - --path.udev.data=/host/root/run/udev/data
