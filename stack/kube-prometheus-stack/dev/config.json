@@ -2,8 +2,8 @@
   "repoURL": "https://prometheus-community.github.io/helm-charts",
   "targetRevision": "54.0.1",
   "chart": "kube-prometheus-stack",
-  "namespace": "default",
-  "name": "stack",
+  "namespace": "test",
+  "name": "stack-1",
   "syncwave" : "one",
   "abcd": "",
   "ref": "main"
