@@ -13,7 +13,7 @@ spec:
       files:
       - path: stack/kube-prometheus-stack/dev/config.json
       repoURL: https://github.com/bitthalpatidar/forjpmc.git
-      revision: HEAD
+      revision: master
   strategy:
     type: AllAtOnce
   syncPolicy:
