@@ -5,11 +5,11 @@ metadata:
   namespace: argocd
 spec:
   generators:
-    - git:
-        files:
-          - path: stack/kube-prometheus-stack/dev/config.json
-        repoURL: https://github.com/bitthalpatidar/forjpmc.git
-        revision: master  # Ensure this is the correct branch, tag, or commit hash
+  - git:
+      files:
+      - path: stack/kube-prometheus-stack/dev/config.json
+      repoURL: https://github.com/bitthalpatidar/forjpmc.git
+      revision: master
   strategy:
     type: AllAtOnce
   syncPolicy:
@@ -23,20 +23,20 @@ spec:
         namespace: '{{namespace}}'
       project: default
       sources:
-        - chart: '{{chart}}'
-          helm:
-            parameters:
-              - name: nodeExporter.enabled
-                value: "false"
-              - name: prometheusOperator.enabled
-                value: "false"
-              - name: prometheus.enabled
-                value: "false"
-              - name: alertmanager.enabled
-                value: "false"
-            releaseName: '{{name}}'
-          repoURL: '{{repoURL}}'
-          targetRevision: '{{targetRevision}}'
+      - chart: '{{chart}}'
+        helm:
+          parameters:
+          - name: "nodeExporter.enabled"
+            value: "false"
+          - name: "prometheusOperator.enabled"
+            value: "false"
+          - name: "prometheus.enabled"
+            value: "false"
+          - name: "alertmanager.enabled"
+            value: "false"
+          releaseName: '{{name}}'
+        repoURL: '{{repoURL}}'
+        targetRevision: '{{targetRevision}}'
       syncPolicy:
         automated:
           allowEmpty: true
@@ -48,61 +48,5 @@ spec:
             maxDuration: 2m
           limit: 10
         syncOptions:
-          - CreateNamespace=true
-          - ServerSideApply=true
-
-
-# # # Uncomment the following section if you want to use the commented configuration
-
-# apiVersion: argoproj.io/v1alpha1
-# kind: ApplicationSet
-# metadata:
-#   name: stack-addons
-#   namespace: argocd
-# spec:
-#   generators:
-#   - git:
-#       files:
-#       - path: stack/kube-prometheus-stack/dev/config.json
-#       repoURL: https://github.com/bitthalpatidar/forjpmc.git
-#       revision: master
-#   strategy:
-#     type: AllAtOnce
-#   syncPolicy:
-#     applicationsSync: create-delete
-#   template:
-#     metadata:
-#       name: in-cluster-{{name}}
-#     spec:
-#       destination:
-#         name: in-cluster
-#         namespace: '{{namespace}}'
-#       project: default
-#       sources:
-#       - chart: '{{chart}}'
-#         helm:
-#           parameters:
-#           - name: "nodeExporter.enabled"
-#             value: "false"
-#           - name: "prometheusOperator.enabled"
-#             value: "false"
-#           - name: "prometheus.enabled"
-#             value: "false"
-#           - name: "alertmanager.enabled"
-#             value: "false"
-#           releaseName: '{{name}}'
-#         repoURL: '{{repoURL}}'
-#         targetRevision: '{{targetRevision}}'
-#       syncPolicy:
-#         automated:
-#           allowEmpty: true
-#           prune: true
-#         retry:
-#           backoff:
-#             duration: 60s
-#             factor: 2
-#             maxDuration: 2m
-#           limit: 10
-#         syncOptions:
-#         - CreateNamespace=true
-#         - ServerSideApply=true
+        - CreateNamespace=true
+        - ServerSideApply=true
