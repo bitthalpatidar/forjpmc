@@ -5,9 +5,9 @@ metadata:
   namespace: argocd
 spec:
   syncPolicy:
-    preserveResourcesOnDeletion: true               
-    applicationsSync: create-only
-    #applicationsSync: create-update
+    #preserveResourcesOnDeletion: true               
+    #applicationsSync: create-only
+    applicationsSync: create-update
     #applicationsSync: create-delete
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
