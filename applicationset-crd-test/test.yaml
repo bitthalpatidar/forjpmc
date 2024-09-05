@@ -15,7 +15,8 @@ spec:
     type: AllAtOnce
   syncPolicy:
     #applicationsSync: create-delete
-    applicationsSync: create-update
+    #applicationsSync: create-update
+    applicationsSync: create-only
   template:
     metadata:
       name: in-cluster-{{name}}
