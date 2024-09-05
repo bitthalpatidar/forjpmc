@@ -28,7 +28,7 @@ spec:
           - cluster: in-cluster
             url: https://kubernetes.default.svc
             values:
-          #     namespace: ns2
+               namespace: ns2
           # - cluster: in-cluster
           #   url: https://kubernetes.default.svc
           #   values:
