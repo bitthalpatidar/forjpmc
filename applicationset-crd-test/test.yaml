@@ -16,7 +16,8 @@ spec:
   syncPolicy:
     #applicationsSync: create-delete
     #applicationsSync: create-update
-    applicationsSync: create-only
+    #applicationsSync: create-only
+    preserveResourcesOnDeletion: FALSE
   template:
     metadata:
       name: in-cluster-{{name}}
