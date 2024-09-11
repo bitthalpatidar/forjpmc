@@ -2,11 +2,19 @@
   "repoURL": "https://github.com/bitthalpatidar/forjpmc.git",
   "targetRevision": "master",
   "chart": "",
-  "valuesPath": "addons/ecrapp/values.yaml",
-  "valuesOverlayPath": "addons/ecrapp/dev/values-overlay.yaml",
   "namespace": "test",
-  "name": "ecrapp2",
+  "name": "ecrapp5",
   "syncwave" : "one",
   "abcd": "",
   "ref": "main"
 }
+
+
+
+
+
+
+
+
+
+
