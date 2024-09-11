@@ -4,7 +4,7 @@
   "chart": "",
   "valuesPath": "addons/ecrapp/values.yaml",
   "valuesOverlayPath": "addons/ecrapp/dev/values-overlay.yaml",
-  "namespace": "addons2",
+  "namespace": "test",
   "name": "ecrapp2",
   "syncwave" : "one",
   "abcd": "",
