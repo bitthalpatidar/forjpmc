@@ -8,7 +8,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/gopaljayanthi/forjpmc.git
+        repoURL: https://github.com/bitthalpatidar/forjpmc.git
         revision: master
         files:
         - path: "addons/cmapp/dev/config.json"
@@ -67,7 +67,7 @@ spec:
           targetRevision: '{{targetRevision}}'
           chart: '{{chart}}'
           ref: '{{ref}}'
-        - repoURL: https://github.com/gopaljayanthi/forjpmc.git
+        - repoURL: https://github.com/bitthalpatidar/forjpmc.gi
           targetRevision: master
           path: configmap
       destination:
