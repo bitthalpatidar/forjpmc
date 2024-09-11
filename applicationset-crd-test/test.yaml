@@ -16,7 +16,7 @@ spec:
   syncPolicy:
     #applicationsSync: create-delete
     #applicationsSync: create-update
-    applicationsSync: create-only
+    #applicationsSync: create-only
     #preserveResourcesOnDeletion: false
     preserveResourcesOnDeletion: true
   template:
