@@ -1,3 +1,4 @@
+
 # Source: genesis/templates/addons-appset.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
@@ -7,7 +8,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/bitthalpatidar/forjpmc.git
+        repoURL: https://github.com/gopaljayanthi/forjpmc.git
         revision: master
         files:
         - path: "addons/**/dev/config.json"
@@ -65,7 +66,7 @@ spec:
           targetRevision: '{{targetRevision}}'
           chart: '{{chart}}'
           ref: '{{ref}}'
-        - repoURL: https://github.com/bitthalpatidar/forjpmc.git
+        - repoURL: https://github.com/gopaljayanthi/forjpmc.git
           targetRevision: master
           path: configmap
       destination:
