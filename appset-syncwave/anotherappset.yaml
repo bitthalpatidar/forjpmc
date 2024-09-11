@@ -85,7 +85,7 @@ spec:
         #   limit: 10
         syncOptions:
         - CreateNamespace=true
-        - ServerSideApply=true
+        # - ServerSideApply=true
       # syncPolicy:
       #   createNamespace: true
       
