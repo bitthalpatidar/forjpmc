@@ -3,7 +3,7 @@
   "targetRevision": "master",
   "chart": "",
   "namespace": "test",
-  "name": "ecrapp-onewave",
+  "name": "ecrapp-one-wave",
   "syncwave" : "one",
   "abcd": "",
   "ref": "main"
