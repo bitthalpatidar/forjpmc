@@ -64,8 +64,8 @@ spec:
       sources:
         - repoURL: '{{repoURL}}'
           targetRevision: '{{targetRevision}}'
-          # chart: '{{chart}}'
-          # ref: '{{ref}}'
+          chart: '{{chart}}'
+          ref: '{{ref}}'
           path: '{{path}}'
         - repoURL: https://github.com/bitthalpatidar/forjpmc.gi
           targetRevision: master
