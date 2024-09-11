@@ -72,3 +72,5 @@ spec:
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: '{{namespace}}'
+      syncPolicy:
+        createNamespace: true
