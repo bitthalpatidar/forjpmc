@@ -4,8 +4,8 @@
   "chart": "helm-test-chart",
   "valuesPath": "addons/ecrapp/values.yaml",
   "valuesOverlayPath": "addons/ecrapp/dev/values-overlay.yaml",
-  "namespace": "addons",
-  "name": "ecrapp",
+  "namespace": "test",
+  "name": "ecrapp-two-wave",
   "syncwave" : "two",
   "ref": ""
 }
