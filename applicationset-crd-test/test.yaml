@@ -8,15 +8,15 @@ spec:
   - git:
       files:
       - path: stack/kube-prometheus-stack/dev/config.json
-      #- path: stack/kube-prometheus-stack/dev/config2.json
+      - path: stack/kube-prometheus-stack/dev/config2.json
       repoURL: https://github.com/bitthalpatidar/forjpmc.git
       revision: master
   strategy:
     type: AllAtOnce
   syncPolicy:
     #applicationsSync: create-delete
-    #applicationsSync: create-update
-    applicationsSync: create-only
+    applicationsSync: create-update
+    #applicationsSync: create-only
     #preserveResourcesOnDeletion: false
     #preserveResourcesOnDeletion: true
   template:
