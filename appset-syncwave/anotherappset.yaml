@@ -159,6 +159,8 @@ spec:
   template:
     metadata:
       name: '{{.name}}-{{.values.namespace}}'
+      annotations:
+        argocd.argoproj.io/sync-wave: '{{syncwave}}'
     spec:
       project: default
       source:
