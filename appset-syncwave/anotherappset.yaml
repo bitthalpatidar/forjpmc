@@ -1,16 +1,121 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: ApplicationSet
+# metadata:
+#   name: appsettest
+#   namespace: test
+# spec:
+#   generators:
+#     - git:
+#         repoURL: https://github.com/bitthalpatidar/forjpmc.git
+#         revision: master
+#         files:
+#         - path: "addons/cmapp/dev/config.json"
+#         - path: "addons/ecrapp/dev/config.json"
+#   strategy:
+#     type: RollingSync
+#     rollingSync:
+#       steps:
+#         - matchExpressions:
+#             - key: syncWave
+#               operator: In
+#               values:
+#                 - zero
+#           maxUpdate: 100%
+#         - matchExpressions:
+#             - key: syncWave
+#               operator: In
+#               values:
+#                 - one
+#           maxUpdate: 100%
+#         - matchExpressions:
+#             - key: syncWave
+#               operator: In
+#               values:
+#                 - two
+#           maxUpdate: 100%
+#         - matchExpressions:
+#             - key: syncWave
+#               operator: In
+#               values:
+#                 - three
+#           maxUpdate: 100%
+#         - matchExpressions:
+#             - key: syncWave
+#               operator: In
+#               values:
+#                 - four
+#           maxUpdate: 100%
+#         - matchExpressions:
+#             - key: syncWave
+#               operator: In
+#               values:
+#                 - five
+#           maxUpdate: 100%
+#   template:
+#     metadata:
+#       name: 'appsettest-{{name}}'
+#       # labels:
+#       #   syncWave: '{{syncwave}}'
+#       annotations:
+#         argocd.argoproj.io/sync-wave: '{{syncwave}}'
+#     spec:
+#       project: default
+#       sources:
+#         - repoURL: '{{repoURL}}'
+#           targetRevision: '{{targetRevision}}'
+#           chart: '{{chart}}'
+#           ref: '{{ref}}'
+#           path: '{{path}}'
+#         - repoURL: https://github.com/bitthalpatidar/forjpmc.git
+#           targetRevision: master
+#           path: configmap
+#       destination:
+#         server: 'https://kubernetes.default.svc'
+#         namespace: '{{namespace}}'
+#       syncPolicy:
+#         automated:
+#           allowEmpty: true
+#           prune: true
+#         retry:
+#           backoff:
+#             duration: 60s
+#             factor: 2
+#             maxDuration: 2m
+#           limit: 10
+#         syncOptions:
+#         - CreateNamespace=true
+#         - ServerSideApply=true
+
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: appsettest
-  namespace: test
+  namespace: test-new
 spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   generators:
-    - git:
-        repoURL: https://github.com/bitthalpatidar/forjpmc.git
-        revision: master
-        files:
-        - path: "addons/cmapp/dev/config.json"
-        - path: "addons/ecrapp/dev/config.json"
+  - matrix:
+      generators:
+      - git:
+          repoURL: https://github.com/bitthalpatidar/forjpmc.git
+          revision: master
+          files:
+          - path: "addons/cmapp/dev/config.json"
+      - list:
+          elements:
+          - cluster: in-cluster
+            url: https://kubernetes.default.svc
+            values:
+              namespace: ns1-new
+          # - cluster: in-cluster
+          #   url: https://kubernetes.default.svc
+          #   values:
+          #      namespace: ns2
+          # - cluster: in-cluster
+          #   url: https://kubernetes.default.svc
+          #   values:
+          #     namespace: ns3
   strategy:
     type: RollingSync
     rollingSync:
@@ -53,38 +158,20 @@ spec:
           maxUpdate: 100%
   template:
     metadata:
-      name: 'appsettest-{{name}}'
-      # labels:
-      #   syncWave: '{{syncwave}}'
-      annotations:
-        argocd.argoproj.io/sync-wave: '{{syncwave}}'
+      name: '{{.name}}-{{.values.namespace}}'
     spec:
       project: default
-      sources:
-        - repoURL: '{{repoURL}}'
-          targetRevision: '{{targetRevision}}'
-          chart: '{{chart}}'
-          ref: '{{ref}}'
-          path: '{{path}}'
-        - repoURL: https://github.com/bitthalpatidar/forjpmc.git
-          targetRevision: master
-          path: configmap
+      source:
+        repoURL: https://github.com/bitthalpatidar/forjpmc.git
+        targetRevision: HEAD
+        path: configmap
       destination:
-        server: 'https://kubernetes.default.svc'
-        namespace: '{{namespace}}'
+        server: '{{.url}}'
+        namespace: '{{.values.namespace}}'
       syncPolicy:
-        automated:
-          allowEmpty: true
-          prune: true
-        retry:
-          backoff:
-            duration: 60s
-            factor: 2
-            maxDuration: 2m
-          limit: 10
+        automated: {}
         syncOptions:
-        - CreateNamespace=true
-        - ServerSideApply=true
-
-
+          - CreateNamespace=true
+          - ServerSideApply=true
+          - PrunePropagationPolicy=orphan
 
