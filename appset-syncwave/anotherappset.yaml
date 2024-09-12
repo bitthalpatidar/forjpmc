@@ -160,7 +160,8 @@ spec:
     metadata:
       name: '{{.name}}-{{.values.namespace}}'
       annotations:
-        argocd.argoproj.io/sync-wave: '{{syncwave}}'
+        argocd.argoproj.io/sync-wave: '1'
+        #'{{syncwave}}'
     spec:
       project: default
       source:
