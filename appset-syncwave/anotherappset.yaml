@@ -74,18 +74,18 @@ spec:
         server: 'https://kubernetes.default.svc'
         namespace: '{{namespace}}'
       syncPolicy:
-        # automated:
-        #   allowEmpty: true
-        #   prune: true
-        # retry:
-        #   backoff:
-        #     duration: 60s
-        #     factor: 2
-        #     maxDuration: 2m
-        #   limit: 10
+        automated:
+          allowEmpty: true
+          prune: true
+        retry:
+          backoff:
+            duration: 60s
+            factor: 2
+            maxDuration: 2m
+          limit: 10
         syncOptions:
         - CreateNamespace=true
-        # - ServerSideApply=true
+        - ServerSideApply=true
       # syncPolicy:
       #   createNamespace: true
       
