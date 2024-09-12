@@ -54,8 +54,8 @@ spec:
   template:
     metadata:
       name: 'appsettest-{{name}}'
-      labels:
-        syncWave: '{{syncwave}}'
+      # labels:
+      #   syncWave: '{{syncwave}}'
       annotations:
         argocd.argoproj.io/sync-wave: '{{syncwave}}'
     spec:
