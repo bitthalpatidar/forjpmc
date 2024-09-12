@@ -11,7 +11,7 @@ spec:
         repoURL: https://github.com/bitthalpatidar/forjpmc.git
         revision: master
         files:
-        - path: "addons/*/dev/config.json"
+        - path: "addons/**/dev/config.json"
   strategy: 
     type: RollingSync
     rollingSync: 
