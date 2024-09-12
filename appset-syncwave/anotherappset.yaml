@@ -1,5 +1,3 @@
-
-# Source: genesis/templates/addons-appset.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -12,38 +10,38 @@ spec:
         revision: master
         files:
         - path: "addons/**/dev/config.json"
-  strategy: 
+  strategy:
     type: RollingSync
-    rollingSync: 
-      steps: 
+    rollingSync:
+      steps:
         - matchExpressions:
             - key: syncWave
               operator: In
-              values: 
+              values:
                 - zero
           maxUpdate: 100%
         - matchExpressions:
             - key: syncWave
               operator: In
-              values: 
+              values:
                 - one
           maxUpdate: 100%
         - matchExpressions:
             - key: syncWave
               operator: In
-              values: 
+              values:
                 - two
           maxUpdate: 100%
         - matchExpressions:
             - key: syncWave
               operator: In
-              values: 
+              values:
                 - three
           maxUpdate: 100%
         - matchExpressions:
             - key: syncWave
               operator: In
-              values: 
+              values:
                 - four
           maxUpdate: 100%
         - matchExpressions:
@@ -55,7 +53,7 @@ spec:
   template:
     metadata:
       name: 'appsettest-{{name}}'
-      labels: 
+      labels:
         syncWave: '{{syncwave}}'
       annotations:
         argocd.argoproj.io/sync-wave: '{{syncwave}}'
@@ -67,7 +65,7 @@ spec:
           chart: '{{chart}}'
           ref: '{{ref}}'
           path: '{{path}}'
-        - repoURL: https://github.com/bitthalpatidar/forjpmc.gi
+        - repoURL: https://github.com/bitthalpatidar/forjpmc.git
           targetRevision: master
           path: configmap
       destination:
@@ -86,6 +84,3 @@ spec:
         syncOptions:
         - CreateNamespace=true
         - ServerSideApply=true
-      # syncPolicy:
-      #   createNamespace: true
-      
