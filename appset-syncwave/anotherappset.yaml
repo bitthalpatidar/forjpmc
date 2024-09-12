@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/bitthalpatidar/forjpmc.git
         revision: master
         files:
-        - path: "addons/cmapp/dev"
+        - path: "addons/cmapp/dev/config.json"
         #- path: "addons/ecrapp/dev/config.json"
   strategy:
     type: RollingSync
