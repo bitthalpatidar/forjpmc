@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/bitthalpatidar/forjpmc.git
         revision: master
         files:
-        - path: "sync-wave/wave-one/config.json"
+        - path: "addons/**/dev/config.json"   #sync-wave/wave-one/config.json"
   strategy:
     type: RollingSync
     rollingSync:
@@ -19,7 +19,7 @@ spec:
               operator: In
               values:
                 - one
-          #maxUpdate: 10%
+          maxUpdate: 100%
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   template:
