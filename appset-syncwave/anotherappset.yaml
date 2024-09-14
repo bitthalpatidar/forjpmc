@@ -33,7 +33,7 @@ spec:
         # - repoURL: '{{repoURL}}'
         #   targetRevision: '{{targetRevision}}'
         #   path: '{{path}}'
-        - repoURL: https://github.com/bitthalpatidar/forjpmc.git
+          repoURL: https://github.com/bitthalpatidar/forjpmc.git
           targetRevision: master
           path: pod-cm
       destination:
