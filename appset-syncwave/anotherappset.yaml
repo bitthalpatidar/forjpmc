@@ -1,3 +1,58 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: ApplicationSet
+# metadata:
+#   name: appsettest
+#   namespace: test
+# spec:
+#   generators:
+#     - git:
+#         repoURL: https://github.com/bitthalpatidar/forjpmc.git
+#         revision: master
+#         files:
+#         - path: "sync-wave/wave-one"
+#   strategy:
+#     type: RollingSync
+#     rollingSync:
+#       steps:
+#         - matchExpressions:
+#             - key: syncWave
+#               operator: In
+#               values:
+#                 - one
+#           maxUpdate: 100%
+#   goTemplate: true
+#   goTemplateOptions: ["missingkey=error"]
+#   template:
+#     metadata:
+#       name: 'appsettest-{{name}}'
+#       labels:
+#         syncWave: '{{syncWave}}'
+#     spec:
+#       project: default
+#       sources:
+#         - repoURL: '{{repoURL}}'
+#           targetRevision: '{{targetRevision}}'
+#           path: '{{path}}'
+#         - repoURL: https://github.com/bitthalpatidar/forjpmc.git
+#           targetRevision: master
+#           path: pod-cm
+#       destination:
+#         server: 'https://kubernetes.default.svc'
+#         namespace: '{{namespace}}'
+#       syncPolicy:
+#         automated:
+#           allowEmpty: true
+#           prune: true
+#         retry:
+#           backoff:
+#             duration: 60s
+#             factor: 2
+#             maxDuration: 2m
+#           limit: 10
+#         syncOptions:
+#         - CreateNamespace=true
+#         - ServerSideApply=true
+
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -10,18 +65,6 @@ spec:
         revision: master
         files:
         - path: "sync-wave/wave-one"
-  strategy:
-    type: RollingSync
-    rollingSync:
-      steps:
-        - matchExpressions:
-            - key: syncWave
-              operator: In
-              values:
-                - one
-          maxUpdate: 100%
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
   template:
     metadata:
       name: 'appsettest-{{name}}'
@@ -29,27 +72,28 @@ spec:
         syncWave: '{{syncWave}}'
     spec:
       project: default
-      sources:
-        - repoURL: '{{repoURL}}'
-          targetRevision: '{{targetRevision}}'
-          path: '{{path}}'
-        - repoURL: https://github.com/bitthalpatidar/forjpmc.git
-          targetRevision: master
-          path: pod-cm
+      source:
+        repoURL: '{{repoURL}}'
+        targetRevision: '{{targetRevision}}'
+        path: '{{path}}'
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: '{{namespace}}'
       syncPolicy:
         automated:
-          allowEmpty: true
           prune: true
-        retry:
-          backoff:
-            duration: 60s
-            factor: 2
-            maxDuration: 2m
-          limit: 10
+          selfHeal: true
         syncOptions:
         - CreateNamespace=true
-        - ServerSideApply=true
-
+        - PruneLast=true
+      # This section may not be required, adjust according to your version
+      # rollingSync:
+      #   steps:
+      #     - matchExpressions:
+      #         - key: syncWave
+      #           operator: In
+      #           values:
+      #             - one
+      #       maxUpdate: 100%
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
