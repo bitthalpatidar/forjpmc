@@ -11,14 +11,26 @@ spec:
       #- path: stack/kube-prometheus-stack/dev/config2.json
       repoURL: https://github.com/bitthalpatidar/forjpmc.git
       revision: master
+  # strategy:
+  #   type: AllAtOnce
+  # syncPolicy:
+  #   applicationsSync: create-delete
+  #   #applicationsSync: create-update
+  #   #applicationsSync: create-only
+  #   #preserveResourcesOnDeletion: false
+  #   #preserveResourcesOnDeletion: true
   strategy:
-    type: AllAtOnce
-  syncPolicy:
-    applicationsSync: create-delete
-    #applicationsSync: create-update
-    #applicationsSync: create-only
-    #preserveResourcesOnDeletion: false
-    #preserveResourcesOnDeletion: true
+    type: RollingSync
+    rollingSync:
+      steps:
+        - matchExpressions:
+            - key: syncwave
+              operator: In
+              values:
+                - one
+          maxUpdate: 0
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   template:
     metadata:
       name: in-cluster-{{name}}
