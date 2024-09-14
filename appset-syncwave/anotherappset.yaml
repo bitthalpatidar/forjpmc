@@ -21,12 +21,12 @@ spec:
               values:
                 - one
           maxUpdate: 100%
-        - matchExpressions:
-            - key: syncWave
-              operator: In
-              values:
-                - two
-          maxUpdate: 100%
+        # - matchExpressions:
+        #     - key: syncWave
+        #       operator: In
+        #       values:
+        #         - two
+        #   maxUpdate: 100%
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   template:
