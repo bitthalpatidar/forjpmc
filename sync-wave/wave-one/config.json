@@ -3,7 +3,7 @@
   "targetRevision": "master",
   "chart": "",
   "namespace": "test",
-  "name": "ecrapp-one-wave",
+  "name": "bitthal-one",
   "syncwave" : "one",
   "abcd": "",
   "ref": "main"
