@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/bitthalpatidar/forjpmc.git
         revision: master
         files:
-        - path: "addons/**/dev/config.json"   #sync-wave/wave-one/config.json"
+        - path: "sync-wave/wave-one"
   strategy:
     type: RollingSync
     rollingSync:
