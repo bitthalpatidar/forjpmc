@@ -9,18 +9,12 @@ spec:
         repoURL: https://github.com/bitthalpatidar/forjpmc.git
         revision: master
         files:
-        - path: "addons/cmapp/dev/config.json"
+        - path: "sync-wave/wave-one/config.json"
         #- path: "addons/ecrapp/dev/config.json"
   strategy:
     type: RollingSync
     rollingSync:
       steps:
-        - matchExpressions:
-            - key: syncWave
-              operator: In
-              values:
-                - zero
-          maxUpdate: 100%
         - matchExpressions:
             - key: syncWave
               operator: In
@@ -33,24 +27,8 @@ spec:
               values:
                 - two
           maxUpdate: 100%
-        - matchExpressions:
-            - key: syncWave
-              operator: In
-              values:
-                - three
-          maxUpdate: 100%
-        - matchExpressions:
-            - key: syncWave
-              operator: In
-              values:
-                - four
-          maxUpdate: 100%
-        - matchExpressions:
-            - key: syncWave
-              operator: In
-              values:
-                - five
-          maxUpdate: 100%
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   template:
     metadata:
       name: 'appsettest-{{name}}'
@@ -68,21 +46,8 @@ spec:
           path: '{{path}}'
         - repoURL: https://github.com/bitthalpatidar/forjpmc.git
           targetRevision: master
-          path: configmap
+          path: pod-cm
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: '{{namespace}}'
-      syncPolicy:
-        automated:
-          allowEmpty: true
-          prune: true
-        retry:
-          backoff:
-            duration: 60s
-            factor: 2
-            maxDuration: 2m
-          limit: 10
-        syncOptions:
-        - CreateNamespace=true
-        - ServerSideApply=true
 
