@@ -16,7 +16,7 @@ spec:
     rollingSync:
       steps:
         - matchExpressions:
-            - key: syncwave
+            - key: syncWave
               operator: In
               values:
                 - one
