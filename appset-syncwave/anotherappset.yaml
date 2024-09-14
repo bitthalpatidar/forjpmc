@@ -87,13 +87,13 @@ spec:
         - CreateNamespace=true
         - PruneLast=true
       # This section may not be required, adjust according to your version
-      # rollingSync:
-      #   steps:
-      #     - matchExpressions:
-      #         - key: syncWave
-      #           operator: In
-      #           values:
-      #             - one
-      #       maxUpdate: 100%
+      rollingSync:
+        steps:
+          - matchExpressions:
+              - key: syncWave
+                operator: In
+                values:
+                  - one
+            maxUpdate: 100%
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
