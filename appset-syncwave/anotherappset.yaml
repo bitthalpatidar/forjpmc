@@ -30,9 +30,9 @@ spec:
     spec:
       project: default
       sources:
-        - repoURL: '{{repoURL}}'
-          targetRevision: '{{targetRevision}}'
-          path: '{{path}}'
+        # - repoURL: '{{repoURL}}'
+        #   targetRevision: '{{targetRevision}}'
+        #   path: '{{path}}'
         - repoURL: https://github.com/bitthalpatidar/forjpmc.git
           targetRevision: master
           path: pod-cm
