@@ -16,7 +16,7 @@ spec:
     rollingSync:
       steps:
         - matchExpressions:
-            - key: syncWave
+            - key: syncwave
               operator: In
               values:
                 - one
@@ -43,7 +43,7 @@ spec:
           targetRevision: '{{targetRevision}}'
           chart: '{{chart}}'
           ref: '{{ref}}'
-          path: '{{path}}'
+          path:  path #'{{path}}'
         - repoURL: https://github.com/bitthalpatidar/forjpmc.git
           targetRevision: master
           path: pod-cm
