@@ -29,7 +29,7 @@ spec:
         syncWave: '{{syncWave}}'
     spec:
       project: default
-      source:
+      sources:
         - repoURL: '{{repoURL}}'
           targetRevision: '{{targetRevision}}'
           path: '{{path}}'
