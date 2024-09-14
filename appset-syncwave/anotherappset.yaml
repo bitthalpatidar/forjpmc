@@ -87,6 +87,8 @@ spec:
         - CreateNamespace=true
         - PruneLast=true
       # This section may not be required, adjust according to your version
+      strategy:
+      type: RollingSync
       rollingSync:
         steps:
           - matchExpressions:
