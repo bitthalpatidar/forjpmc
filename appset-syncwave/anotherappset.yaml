@@ -1,3 +1,4 @@
+# Source: genesis/templates/addons-appset.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -5,19 +6,25 @@ metadata:
   namespace: test
 spec:
   generators:
-  - git:
-      repoURL: https://github.com/bitthalpatidar/forjpmc.git
-      revision: master
-      files:
-      - path: "sync-wave/**/config.json"
-  strategy:
+    - git:
+        repoURL: https://github.com/gopaljayanthi/forjpmc.git
+        revision: master
+        files:
+        - path: "addons/**/dev/config.json"
+  strategy: 
     type: RollingSync
-    rollingSync:
-      steps:
+    rollingSync: 
+      steps: 
         - matchExpressions:
             - key: syncWave
               operator: In
-              values:
+              values: 
+                - zero
+          maxUpdate: 100%
+        - matchExpressions:
+            - key: syncWave
+              operator: In
+              values: 
                 - one
           maxUpdate: 100%
         - matchExpressions:
@@ -25,35 +32,42 @@ spec:
               operator: In
               values: 
                 - two
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
+          maxUpdate: 100%
+        - matchExpressions:
+            - key: syncWave
+              operator: In
+              values: 
+                - three
+          maxUpdate: 100%
+        - matchExpressions:
+            - key: syncWave
+              operator: In
+              values: 
+                - four
+          maxUpdate: 100%
+        - matchExpressions:
+            - key: syncWave
+              operator: In
+              values: 
+                - five
+          maxUpdate: 100%
   template:
     metadata:
       name: 'appsettest-{{name}}'
-      labels:
-        syncWave: '{{syncWave}}'
+      labels: 
+        syncWave: '{{syncwave}}'
+      # annotations:
+      #   argocd.argoproj.io/sync-wave: '{{syncwave}}'
     spec:
       project: default
       sources:
         - repoURL: '{{repoURL}}'
           targetRevision: '{{targetRevision}}'
-          path: '{{path}}'
-        - repoURL: https://github.com/bitthalpatidar/forjpmc.git
+          chart: '{{chart}}'
+          ref: '{{ref}}'
+        - repoURL: https://github.com/gopaljayanthi/forjpmc.git
           targetRevision: master
-          path: pod-cm
+          path: configmap
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: '{{namespace}}'
-      syncPolicy:
-        automated:
-          allowEmpty: true
-          prune: true
-        retry:
-          backoff:
-            duration: 60s
-            factor: 2
-            maxDuration: 2m
-          limit: 10
-        syncOptions:
-        - CreateNamespace=true
-        - ServerSideApply=true
