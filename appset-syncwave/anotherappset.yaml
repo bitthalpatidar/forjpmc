@@ -10,7 +10,7 @@ spec:
         repoURL: https://github.com/gopaljayanthi/forjpmc.git
         revision: master
         files:
-        - path: "addons/**/dev/config.json"
+        - path: "addons/*/dev/config.json"
   strategy: 
     type: RollingSync
     rollingSync: 
@@ -67,7 +67,7 @@ spec:
           ref: '{{ref}}'
         - repoURL: https://github.com/gopaljayanthi/forjpmc.git
           targetRevision: master
-          path: configmap
+          path: sync-wave
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: '{{namespace}}'
