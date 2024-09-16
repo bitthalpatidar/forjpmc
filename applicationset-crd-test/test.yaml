@@ -37,10 +37,10 @@ spec:
     spec:
       destination:
         name: in-cluster
-        namespace: '{{. namespace}}'
+        namespace: '{{ .namespace}}'
       project: default
       sources:
-      - chart: '{{. chart}}'
+      - chart: '{{ .chart}}'
         helm:
           parameters:
           - name: "nodeExporter.enabled"
