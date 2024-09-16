@@ -19,7 +19,7 @@ spec:
               operator: In
               values:
                 - one
-          maxUpdate: 0
+          maxUpdate: 100%
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   template:
