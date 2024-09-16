@@ -57,19 +57,19 @@ spec:
     metadata:
       name: 'appsettest-{{ .name}}'
       labels: 
-        syncWave: '{{syncwave}}'
+        syncWave: '{{.syncwave}}'
       annotations:
-        argocd.argoproj.io/sync-wave: '{{syncwave}}'
+        argocd.argoproj.io/sync-wave: '{{.syncwave}}'
     spec:
       project: default
       sources:
-        - repoURL: '{{repoURL}}'
-          targetRevision: '{{targetRevision}}'
-          chart: '{{chart}}'
-          ref: '{{ref}}'
+        - repoURL: '{{.repoURL}}'
+          targetRevision: '{{.targetRevision}}'
+          chart: '{{.chart}}'
+          ref: '{{.ref}}'
         - repoURL: https://github.com/bitthalpatidar/forjpmc.git
           targetRevision: master
           path: pod-cm
       destination:
         server: 'https://kubernetes.default.svc'
-        namespace: '{{namespace}}'
+        namespace: '{{.namespace}}'
