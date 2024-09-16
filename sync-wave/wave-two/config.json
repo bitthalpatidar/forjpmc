@@ -2,7 +2,7 @@
   "repoURL": "https://github.com/bitthalpatidar/forjpmc.git",
   "targetRevision": "master",
   "chart": "",
-  "namespace": "test",
+  "namespace": "test1",
   "name": "ecrapp-two-wave",
   "syncwave" : "two",
   "abcd": "",
