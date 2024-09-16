@@ -10,7 +10,7 @@ spec:
         repoURL: https://github.com/bitthalpatidar/forjpmc.git
         revision: master
         files:
-        - path: "sync-wave/*/config.json"
+        - path: "sync-wave/**/config.json"
   strategy: 
     type: RollingSync
     rollingSync: 
