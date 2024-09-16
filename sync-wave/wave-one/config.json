@@ -2,7 +2,7 @@
   {
     "repoURL": "https://github.com/bitthalpatidar/forjpmc.git",
     "targetRevision": "master",
-    "chart": "",
+    "path": "sync-wave/wave-one",
     "namespace": "test",
     "name": "bitthal-one",
     "syncwave": "one",
