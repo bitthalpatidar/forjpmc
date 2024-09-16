@@ -55,7 +55,7 @@ spec:
   goTemplateOptions: ["missingkey=error"]
   template:
     metadata:
-      name: 'appsettest-{{name}}'
+      name: 'appsettest-{{.name}}'
       labels: 
         syncWave: '{{syncwave}}'
       annotations:
