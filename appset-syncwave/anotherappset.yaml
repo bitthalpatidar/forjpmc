@@ -7,10 +7,10 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/gopaljayanthi/forjpmc.git
+        repoURL: https://github.com/bitthalpatidar/forjpmc.git
         revision: master
         files:
-        - path: "addons/*/dev/config.json"
+        - path: "sync-wave/*/config.json"
   strategy: 
     type: RollingSync
     rollingSync: 
@@ -65,9 +65,9 @@ spec:
           targetRevision: '{{targetRevision}}'
           chart: '{{chart}}'
           ref: '{{ref}}'
-        - repoURL: https://github.com/gopaljayanthi/forjpmc.git
+        - repoURL: https://github.com/bitthalpatidar/forjpmc.git
           targetRevision: master
-          path: sync-wave
+          path: pod-cm
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: '{{namespace}}'
