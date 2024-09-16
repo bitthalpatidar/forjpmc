@@ -1,10 +1,12 @@
-{
-  "repoURL": "https://github.com/bitthalpatidar/forjpmc.git",
-  "targetRevision": "master",
-  "chart": "",
-  "namespace": "test",
-  "name": "bitthal-one",
-  "syncwave" : "one",
-  "abcd": "",
-  "ref": "main"
-}
+[
+  {
+    "repoURL": "https://github.com/bitthalpatidar/forjpmc.git",
+    "targetRevision": "master",
+    "chart": "",
+    "namespace": "test",
+    "name": "bitthal-one",
+    "syncwave": "one",
+    "abcd": "",
+    "ref": "master"
+  }
+]
