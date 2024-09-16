@@ -15,11 +15,16 @@ spec:
     rollingSync:
       steps:
         - matchExpressions:
-            - key: syncwave
+            - key: syncWave
               operator: In
               values:
                 - one
           maxUpdate: 100%
+        - matchExpressions:
+            - key: syncWave
+              operator: In
+              values: 
+                - two
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   template:
