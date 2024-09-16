@@ -1,16 +1,17 @@
+
 # Source: genesis/templates/addons-appset.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: appsettest
-  namespace: test
+  namespace: tcbargo
 spec:
   generators:
     - git:
-        repoURL: https://github.com/bitthalpatidar/forjpmc.git
+        repoURL: https://github.com/gopaljayanthi/forjpmc.git
         revision: master
         files:
-        - path: "sync-wave/wave-one/config.json"
+        - path: "addons/**/dev/config.json"
   strategy: 
     type: RollingSync
     rollingSync: 
@@ -51,15 +52,13 @@ spec:
               values: 
                 - five
           maxUpdate: 100%
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
   template:
     metadata:
       name: 'appsettest-{{ .name}}'
       labels: 
         syncWave: '{{ .syncwave}}'
       # annotations:
-      #   argocd.argoproj.io/sync-wave: '{{.syncwave}}'
+      #   argocd.argoproj.io/sync-wave: '{{syncwave}}'
     spec:
       project: default
       sources:
@@ -67,22 +66,9 @@ spec:
           targetRevision: '{{ .targetRevision}}'
           chart: '{{ .chart}}'
           ref: '{{ .ref}}'
-        - repoURL: https://github.com/bitthalpatidar/forjpmc.git
+        - repoURL: https://github.com/gopaljayanthi/forjpmc.git
           targetRevision: master
-          path: pod-cm
+          path: configmap
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: '{{ .namespace}}'
-      syncPolicy:
-        automated:
-          allowEmpty: true
-          prune: true
-        retry:
-          backoff:
-            duration: 60s
-            factor: 2
-            maxDuration: 2m
-          limit: 10
-        syncOptions:
-        - CreateNamespace=true
-        - ServerSideApply=true
