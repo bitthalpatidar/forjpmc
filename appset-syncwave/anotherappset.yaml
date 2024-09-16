@@ -51,6 +51,8 @@ spec:
               values: 
                 - five
           maxUpdate: 100%
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   template:
     metadata:
       name: 'appsettest-{{name}}'
