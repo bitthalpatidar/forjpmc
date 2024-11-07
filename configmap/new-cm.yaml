@@ -3,7 +3,7 @@ data:
   myvalue: twosources
   secondkey: secondvalue
   thirdkey: thirdvalue
-  fourth: fourth-value
+  fourth: fourth-4
   five: five-value
 kind: ConfigMap
 metadata:
