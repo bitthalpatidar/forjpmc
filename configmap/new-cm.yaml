@@ -7,4 +7,4 @@ data:
   five: five-value
 kind: ConfigMap
 metadata:
-  name: twosources-2
+  name: twosources2-2
