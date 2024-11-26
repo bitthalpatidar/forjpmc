@@ -18,7 +18,8 @@ data:
       echo "No applications found with label: $LABEL_SELECTOR"
       exit 1
     fi
-
+    echo $applications
+    echo
     # Loop through each application and get the health and sync status
     echo "Application Name | Health Status | Sync Status"
     echo "------------------------------------------------"
